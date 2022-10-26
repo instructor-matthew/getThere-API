@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>getThere</title>
+  <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="stylesheet" href="../static/css/normalize.css">
+  <link rel="stylesheet" href="../static/css/grid.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="main-nav">
+        <form method="post" action="/login">
+          {% csrf_token %}
+          <input type="text" name="login_username" placeholder="Your email">
+          <input type="password" name="login_password" placeholder="Password">
+          <button>Sign In</button>
+        </form>
+      </div>
+    </nav>
+    <p>{% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}</p>
+    <div class="hero-text-box">
+      <p class="sig">getThere</p>
+      <p class="photo">find. your. destination.</p>
+      <div class="register">
+        <form method="post" action="/register">
+          {% csrf_token %}
+          <input type="text" name="name" placeholder="Your Name*"><input type="text" name="email"
+            placeholder="Your Email*"><input type="password" name="password"
+            placeholder="Choose Password*"><button>Register</button>
+        </form>
+      </div>
+    </div>
+
+  </header>
+</body>
+
+</html>

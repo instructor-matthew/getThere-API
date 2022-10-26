@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Results</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <h1>Results near {{destination}}</h1>
+      <hr>
+      <div class="col-sm-6">
+
+      </div>
+      <div class="col-md-6">
+        {% for item in all_airports%}
+        <h3>{{item.code}} | {{item.name}}</h3>
+        <p><b>City:</b> {{item.city}}</p>
+        {% if item.themes %}
+        <p>Popular Attractions:</p>
+        <ul>
+          {% for item in item.themes %}
+          <li>{{item}}</li>
+          {% endfor %}
+          {% endif %}
+        </ul>
+        <hr>
+        {% endfor %}
+      </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="../static/css/header.css">
+  <link rel="stylesheet" href="../static/css/reset.css">
+  <link rel="stylesheet" href="../static/css/layout.css">
+  <link rel="stylesheet" href="../static/css/forms.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="header">
+    <nav class="header-nav">
+
+      <h1 class="header-logo">
+        <a href="#">getThere</a>
+      </h1>
+
+      <ul class="header-list">
+        <li>
+          <a href="#">Profile</a>
+        </li>
+        <li><a href="#">Settings</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+
+    </nav>
+  </header>
+  <div class="content">
+    <div class="content-sidebar">
+      <h1>Welcome {{user_info.name}}</h1> - <a href="/editprofile">Edit Profile</a>
+    </div>
+    <div class="content-main">
+      <h3>Find the nearest airport to any given destination!</h3>
+      <form method="POST" action="/getcity" class="form">
+        <fieldset class="form-fieldset">
+          <div class="input">
+
+            {% csrf_token %}
+            <label for="code">Destination i.e. Grand Canyon: </label> <input type="text" name="code"
+              class="form-control">
+          </div>
+          <div class="input">
+            <label for="radius">Radius (miles):</label><input type="text" name="radius" class="form-control">
+          </div>
+          <div class="submit">
+            <button>Get My Airports!</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
